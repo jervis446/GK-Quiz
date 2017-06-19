@@ -1,0 +1,518 @@
+$(document).ready(function() {
+
+  $('.one .find').click(function() {
+
+    $('.one').fadeOut(100);
+    $('.one').css('display','none');
+    $('.two').css('display','block');
+  });
+  $("#sstradio").click(function(){
+   $(".popup-wrapper").css("display","flex");
+  });
+  $("#scnradio").click(function(){
+   $(".popup-wrapper").css("display","flex");
+  });
+  $(".closepop").click(function(){
+   $(".popup-wrapper").css("display","none");
+  });
+
+  $('.two .find').click(function(){
+    var check= $(this).parents('.cover').find('input:checked').val();
+    $(this).parents('.cover').find('input:checked').attr("disabled", true);
+    $(this).parents('.cover').find('input:checked').attr("checked", false);
+
+    $('.'+check).show();
+    window.clearInterval(timeInterval);
+    if(check == 'sst')
+    {
+      $('.timer').show();
+      runTimer($('.'+check).find('.question').attr("id"));
+      subject = "Social Studies"
+    }
+     if(check == 'maths')
+    {
+      subject = "Maths"
+    }
+     if(check == 'science')
+    {
+      $('.timer').show();
+      runTimer($('.'+check).find('.question').attr("id"));
+      subject = "Science"
+    }
+     if(check == 'english')
+    {
+      subject = "English"
+    }
+    subpartic++;
+
+  });
+  var subject='';
+  var subgrade='';
+  var resultQuote='';
+  var eng=[];
+  var sst=[];
+  var science=[];
+  var maths=[];
+  //var engres=['under','Rabindranath Tagore','there is peace and harmony','God','live with animals','calm and contented',"The underlined verb phrase will change to 'was being vandalised'.",'smell','would','No season is as good as the monsoon in our country']
+  var sstres=['Vice-President','District and Sessions Judge','Chief Justice of India','A.O. Hume', 'Coal', 'Grand Trunk Road', 'Lotus', '29','Cattle', 'Narmada Bachao Andolan'];
+  var scienceres=['Dyne','Tin',"Boyle's Law",'Al and Cu','Diffusion','(F-32)x5/9','C6H12O6','Ethyne','Hydrogen Sulphide','Mitochondria']
+  var mathsres=['x - y = 1','17','14','5','30','5','11','5','15','Pythagoras Theorem']
+  var subpartic=0;
+  var sstScore=0;
+  var mathsScore=0;
+  var scienceScore=0;
+  var englishScore=0;
+  var englishGrad='';
+  var mathsGrad='';
+  var scnGrad='';
+  var sharescreen='';
+  var sstGrad='';
+  var imgsrc='';
+  Date.prototype.yyyymmdd = function() {
+    var yyyy = this.getFullYear().toString();
+    var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+    var dd  = this.getDate().toString();
+    return (dd[1]?dd:"0"+dd[0]) + "/" + (mm[1]?mm:"0"+mm[0]) + "/" + yyyy; // padding
+  };
+  var date = new Date();
+  $('.date').append(date.yyyymmdd());
+
+
+  /*$('.english .showAnswer').click(function(){
+    // $('.timer').hide();
+    // window.clearInterval(timeInterval);
+
+    var ans=''
+    var qId = $(this).parents('.question').attr('id');
+
+    var nQID=qId.slice(4, qId.length);
+    if($('#'+qId).find('input').attr('type') === 'text'){
+      ans=$('#'+qId).find('input:text').val();
+      eng.push(ans);
+      $('#'+qId).find('input:text').attr("disabled", true);
+      // var span = $('<span />').attr({'class':'folder_name' }).html('Elway');
+      console.log($('#'+qId).find('.questionTextbox'));
+    }
+    else if($('#'+qId).find('input').attr('type') === 'radio'){
+      ans= $('#'+qId).find('input:checked').parents('li').find('.custRadio span').text()
+      eng.push(ans);
+      $('#'+qId).find('input:radio').attr("disabled", 'disabled');
+    }
+
+    var ansValue=engres[nQID-1]
+    if(ans==ansValue){
+      $('.showAnswer').hide();
+      $('.toggleNext').show();
+      $('.answerText').show();
+      $('.answerText').text('Correct');
+      $('#'+qId).find('.questionTextbox').append('<span class="imageDisplay"><img src="./generalknowledgecorrect.png"/></span>')
+      $('#'+qId).find('input:checked').parents('li').find('.custRadio span').append('<span class="imageDisplay"><img src="./generalknowledge/orrect.png"/></span>')
+    }
+    else if((ans!=ansValue)){
+      $('.showAnswer').hide();
+      $('.answerText').show();
+      $('.answerText').text('Answer: '+ansValue);
+      $('.toggleNext').show();
+      $('#'+qId).find('.questionTextbox').append('<span class="imageDisplay"><img src="./generalknowledge/cross.png"/></span>')
+      $('#'+qId).find('input:checked').parents('li').find('.custRadio span').append('<span class="imageDisplay"><img src="./generalknowledge/cross.png"/></span>')
+    }
+
+  })
+
+  $('.english .next').click(function(){
+
+    var qId = $(this).parents('.question').attr('id');
+    var nQID=qId.slice(4, qId.length);
+
+    nQID++
+    $('#'+qId).hide();
+    $('#engQ'+nQID).show();
+    $('.showAnswer').show();
+    // window.clearInterval(timeInterval);
+    // $('.timer').show();
+    // runTimer(('engQ'+nQID));
+    $('.answerText').hide();
+    $('.toggleNext').hide();
+  })*/
+  $('.sst .showAnswer').click(function(){
+    $('.timer').hide();
+    window.clearInterval(timeInterval);
+    var ans=''
+    var qId = $(this).parents('.question').attr('id');
+    var nQID=qId.slice(4, qId.length);
+    if($('#'+qId).find('input').attr('type') === 'text'){
+      ans=$('#'+qId).find('input:text').val();
+      sst.push(ans);
+      $('#'+qId).find('input:text').attr("disabled", true);
+    }
+    else if($('#'+qId).find('input').attr('type') === 'radio'){
+      ans= $('#'+qId).find('input:checked').parents('li').find('.custRadio span').text()
+      sst.push(ans);
+      $('#'+qId).find('input:radio').attr("disabled", 'disabled');
+    }
+
+    var ansValue=sstres[nQID-1]
+    if(ans==ansValue){
+      $('.showAnswer').hide();
+      $('.toggleNext').show();
+      $('.answerText').show();
+      $('.answerText').text('Correct');
+      $('#'+qId).find('.questionTextbox').append('<span class="imageDisplay"><img src="./generalknowledge/correct.png"/></span>')
+      $('#'+qId).find('input:checked').parents('li').find('.custRadio span').append('<span class="imageDisplay"><img src="./generalknowledge/correct.png"/></span>')
+    }
+    else if((ans!=ansValue)){
+      $('.showAnswer').hide();
+      $('.answerText').show();
+      $('.answerText').text('Answer: '+ansValue);
+      $('.toggleNext').show();
+      $('#'+qId).find('.questionTextbox').append('<span class="imageDisplay"><img src="./generalknowledge/cross.png"/></span>')
+      $('#'+qId).find('input:checked').parents('li').find('.custRadio span').append('<span class="imageDisplay"><img src="./generalknowledge/cross.png"/></span>')
+    }
+
+  })
+
+  $('.sst .next').click(function(){
+    window.clearInterval(timeInterval);
+
+    var qId = $(this).parents('.question').attr('id');
+    var nQID=qId.slice(4, qId.length);
+
+    nQID++
+    $('#'+qId).hide();
+    $('#sstQ'+nQID).show();
+    $('.showAnswer').show();
+    $('.timer').show();
+    runTimer(('sstQ'+nQID));
+      $('.answerText').hide();
+      $('.toggleNext').hide();
+  })
+
+
+  $('.science .showAnswer').click(function(){
+    $('.timer').hide();
+    window.clearInterval(timeInterval);
+    var ans=''
+    var qId = $(this).parents('.question').attr('id');
+    var nQID=qId.slice(8, qId.length);
+    if($('#'+qId).find('input').attr('type') === 'text'){
+      ans=$('#'+qId).find('input:text').val();
+      science.push(ans);
+      $('#'+qId).find('input:text').attr("disabled", true);
+    }
+    else if($('#'+qId).find('input').attr('type') === 'radio'){
+      ans= $('#'+qId).find('input:checked').parents('li').find('.custRadio span').text()
+      science.push(ans);
+      $('#'+qId).find('input:radio').attr("disabled", 'disabled');
+    }
+
+    var ansValue=scienceres[nQID-1]
+    if(ans==ansValue){
+      $('.showAnswer').hide();
+      $('.toggleNext').show();
+      $('.answerText').show();
+      $('.answerText').text('Correct');
+      $('#'+qId).find('.questionTextbox').append('<span class="imageDisplay"><img src="./generalknowledge/correct.png"/></span>')
+      $('#'+qId).find('input:checked').parents('li').find('.custRadio span').append('<span class="imageDisplay"><img src="./generalknowledge/correct.png"/></span>')
+    }
+    else if((ans!=ansValue)){
+      $('.showAnswer').hide();
+      $('.answerText').show();
+      $('.answerText').text('Answer: '+ansValue);
+      $('.toggleNext').show();
+      $('#'+qId).find('.questionTextbox').append('<span class="imageDisplay"><img src="./generalknowledge/cross.png"/></span>')
+      $('#'+qId).find('input:checked').parents('li').find('.custRadio span').append('<span class="imageDisplay"><img src="./generalknowledge/cross.png"/></span>')
+    }
+
+  })
+
+  $('.science .next').click(function(){
+
+    var qId = $(this).parents('.question').attr('id');
+    var nQID=qId.slice(8, qId.length);
+
+    nQID++
+    $('#'+qId).hide();
+    $('#scienceQ'+nQID).show();
+    $('.showAnswer').show();
+    window.clearInterval(timeInterval);
+    $('.timer').show();
+    runTimer(('scienceQ'+nQID));
+      $('.answerText').hide();
+      $('.toggleNext').hide();
+  })
+
+  $('.maths .showMathsAnswer').click(function(){
+
+    var ans=''
+    var qId = $(this).parents('.question').attr('id');
+    var nQID=qId.slice(6, qId.length);
+    if($('#'+qId).find('input').attr('type') === 'text'){
+      ans=$('#'+qId).find('input:text').val();
+      maths.push(ans);
+      $('#'+qId).find('input:text').attr("disabled", true);
+    }
+    else if($('#'+qId).find('input').attr('type') === 'radio'){
+      ans= $('#'+qId).find('input:checked').parents('li').find('.custRadio span').text()
+      maths.push(ans);
+      $('#'+qId).find('input:radio').attr("disabled", 'disabled');
+    }
+
+    var ansValue=mathsres[nQID-1]
+    if(ans==ansValue){
+      $('.showMathsAnswer').hide();
+      $('.toggleNext').show();
+      $('.answerText').show();
+      $('.answerText').text('Correct');
+      $('#'+qId).find('.questionTextbox').append('<span class="imageDisplay"><img src="./generalknowledgecorrect.png"/></span>')
+    }
+    else if((ans!=ansValue)){
+      $('.showMathsAnswer').hide();
+      $('.answerText').show();
+      $('.answerText').text('Answer: '+ansValue);
+      $('.toggleNext').show();
+      $('#'+qId).find('.questionTextbox').append('<span class="imageDisplay"><img src="./generalknowledge/cross.png"/></span>')
+    }
+
+  })
+
+  $('.maths .next').click(function(){
+
+    var qId = $(this).parents('.question').attr('id');
+    var nQID=qId.slice(6, qId.length);
+
+    nQID++
+    $('#'+qId).hide();
+    $('#mathsQ'+nQID).show();
+    $('.showMathsAnswer').show();
+    $('.answerText').hide();
+    $('.toggleNext').hide();
+  })
+
+  $('.done').click(function(){
+    if(subject=="Social Studies"){
+      for(var i=0;i<10;i++){
+        if(sstres[i]==sst[i]){
+         sstScore++
+        }
+      }
+      if(sstScore>=9){
+        sharescreen="I scored a A in Social Studies";
+        imgsrc="./generalknowledge/sst/ss1.png";
+        subgrade = "A";
+        resultQuote="You are going to score better than Sharma ji ka beta.";
+      }
+      if(sstScore>=7 && sstScore<9){
+        sharescreen="I scored a B in Social Studies";
+        imgsrc="./generalknowledge/sst/ss2.png";
+        subgrade = "B";
+        resultQuote="You'll get into Roadies, but not into the college you want,tabhi Juet Me Sadh raha he!";
+      }
+      if(sstScore>=5 && sstScore<7){
+        sharescreen="I scored a C in Social Studies";
+        imgsrc="./generalknowledge/sst/ss3.png";
+        subgrade = "C";
+        resultQuote="Tu rehne de,tujhse na Ho payega!!";
+      }
+      if(sstScore<4){
+      sharescreen="I scored a F in Social Studies";
+        imgsrc="./generalknowledge/sst/ss4.png";
+        subgrade = "F";
+        resultQuote="Tu rehne de,tujhse na Ho payega!!,b.sc karle bc";
+      }
+      sstGrad=subgrade;
+    }
+    /*if(subject=="English"){
+      for(var i=0;i<10;i++){
+        if(engres[i]==eng[i]){
+         englishScore++
+        }
+      }
+      if(englishScore>=9){
+        sharescreen="I scored a A in English";
+        imgsrc="./generalknowledge/Science/e1.png";
+        subgrade = "A";
+        resultQuote="You are going to score better than Sharma ji ka beta.";
+      }
+      if(englishScore>=7 && englishScore<9){
+        sharescreen="I scored a B in English";
+        imgsrc="./generalknowledge/Science/e2.png";
+        subgrade = "B";
+        resultQuote="You'll get into Roadies, but not into the college you want,tabhi Juet Me Sadh raha he!";
+      }
+      if(englishScore>=5 && englishScore<7){
+        sharescreen="I scored a C in English";
+        imgsrc="./generalknowledge/Science/e3.png";
+        subgrade = "C";
+        resultQuote="Tu rehne de.";
+      }
+      if(englishScore<4){
+        sharescreen="I scored a F in English";
+        imgsrc="./generalknowledge/Science/e4.png";
+        subgrade = "F";
+        resultQuote="Tumse na ho payega, beta.";
+      }
+      englishGrad=subgrade;
+    }*/
+    if(subject=="Maths"){
+      for(var i=0;i<10;i++){
+        if(mathsres[i]==maths[i]){
+         mathsScore++
+        }
+      }
+      if(mathsScore>=9){
+        sharescreen="I scored a A in Maths";
+        imgsrc="./generalknowledge/Maths1/m1.png";
+        subgrade = "A";
+        resultQuote="You are going to score better than Sharma ji ka beta.";
+      }
+      if(mathsScore>=7 && mathsScore<9){
+        sharescreen="I scored a B in Maths";
+        imgsrc="./generalknowledge/Maths1/m2.png";
+        subgrade = "B";
+        resultQuote="You'll get into Roadies, but not into the college you want,tabhi Juet Me Sadh raha he!";
+      }
+      if(mathsScore>=5 && mathsScore<7){
+        sharescreen="I scored a C in Maths";
+        imgsrc="./generalknowledge/Maths1/m3.png";
+        subgrade = "C";
+        resultQuote="Tu rehne de.";
+      }
+      if(mathsScore<4){
+        sharescreen="I scored a F in Maths";
+        imgsrc="./generalknowledge/Maths1/m4.png";
+        subgrade = "F";
+        resultQuote="Tumse na ho payega, beta.";
+      }
+      mathsGrad=subgrade;
+    }
+    if(subject=="Science"){
+      for(var i=0;i<10;i++){
+        if(scienceres[i]==science[i]){
+         scienceScore++
+        }
+      }
+      if(scienceScore>=9){
+        sharescreen="I scored a A in Science";
+        imgsrc="https://s4.scoopwhoop.com/sw/10classexam/images/s1.png";
+        subgrade = "A";
+        resultQuote="You are going to score better than Sharma ji ka beta.";
+      }
+      if(scienceScore>=7 && scienceScore<9){
+        sharescreen="I scored a B in Science";
+        imgsrc="./generalknowledge/Science/s2.png";
+        subgrade = "B";
+        resultQuote="You'll get into Roadies, but not into the college you want,tabhi Juet Me Sadh raha he!";
+      }
+      if(scienceScore>=5 && scienceScore<7){
+        sharescreen="I scored a C in Science";
+        imgsrc="./generalknowledge/Science/s3.png";
+        subgrade = "C";
+        resultQuote="Tu rehne de.";
+      }
+      if(scienceScore<4){
+        sharescreen="I scored a F in Science";
+        imgsrc="./generalknowledge/Science/s4.png";
+        subgrade = "F";
+        resultQuote="Tumse na ho payega, beta.";
+      }
+      scnGrad=subgrade;
+    }
+    $("#quizfb").attr("href", "https://www.facebook.com/kumar.adarsh.446" + sharescreen),
+   
+
+
+    $('.result1').show();
+    $('.sst').hide()
+    $('.english').hide()
+    $('.maths').hide()
+    $('.science').hide()
+    $('.two').hide()
+    $('.one').hide()
+    $('.subName').empty();
+    $('.subName').append(subject);
+    $('.subGrade').empty();
+    $('.subGrade').append(subgrade);
+    $('.resultQuote').empty();
+    $('.resultQuote').append(resultQuote);
+    if(subpartic==4){
+      $('.cumaltive').empty();
+      $('.cumaltive').append("Get your cumulative score");
+      $('.goInd').addClass('goCum');
+      $('.goCum').removeClass('goInd');
+    }
+    $('.goInd').click(function(){
+    $('.result1').hide();
+    $('.two').show();
+
+  });
+  $('.goCum').click(function(){
+    $('.two').hide();
+    $('.result1').hide();
+    $('.result2').show();
+    $('.gardmath').empty();
+    $('.gardmath').append(mathsGrad);
+    $('.gardscn').empty();
+    $('.gardscn').append(scnGrad);
+    $('.gardsst').empty();
+    $('.gardsst').append(sstGrad);
+    $('.gardeng').empty();
+    $('.gardeng').append(englishGrad);
+    $('.result2').css("display","block");
+  });
+
+  });
+
+
+   var count;
+  var timeInterval;
+
+  function runTimer(curId){
+    window.clearInterval(timeInterval);
+
+    var nQID,ansValue;
+    var takeChar=curId.slice(0, 2);
+    // if(takeChar=='en'){
+    //    nQID=curId.slice(4, curId.length);
+    //    ansValue=engres[nQID-1]
+    //
+    // }
+    if(takeChar=='ss'){
+      window.clearInterval(timeInterval);
+
+       nQID=curId.slice(4, curId.length);
+       ansValue=sstres[nQID-1]
+    }
+    if(takeChar=='sc'){
+      window.clearInterval(timeInterval);
+
+       nQID=curId.slice(8, curId.length);
+       ansValue=scienceres[nQID-1]
+    }
+      count = 15;
+      timeInterval = window.setInterval(function(){
+      if(count>=0){
+        var countNum=('0' + count).slice(-2)
+        $(".timer span").text(countNum);
+        count--;
+      }
+
+      if(count<0){
+        //$('#'+curId).find('.submitthis').css('display','none');
+        window.clearInterval(timeInterval);
+        count = 15;
+        $('.timer').css('display','none');
+        $('#'+curId).find('.showAnswer').css('display','block');
+        // $('#'+curId).find('.answerText').css('display','block');
+        $('#'+curId).find('.answerText').text('Answer: '+ansValue);
+        // $('#'+curId).find('.toggleNext').css('display','block');
+        if($('#'+curId).find('input').attr('type') === 'text'){
+          $('#'+curId).find('input:text').attr("disabled", true);
+
+        }
+        if($('#'+curId).find('input').attr('type') === 'radio'){
+          $('#'+curId).find('input:radio').attr("disabled", 'disabled');
+        }
+      }
+    },1500);
+  }
+});

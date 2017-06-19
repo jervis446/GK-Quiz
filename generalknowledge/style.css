@@ -1,0 +1,45 @@
+*{
+	margin:0;
+}
+@font-face{
+	font-family:clearlight;
+	src: url('fonts/clearlight.ttf');
+}
+#wall{
+	background-image: url('login_bg.jpeg');
+	width:100%;
+	height:100%;
+	position:fixed;
+	
+}
+
+#centerBlock{
+	margin-top:100px;
+	width:750px;
+	height:500px;
+}
+
+
+#innerBlock{
+	opacity:0.8;
+	text-align: center;
+	width: 100%;
+	height:100%;
+	background-color: black;
+	color: white;
+	border-radius: 30px 30px 30px 30px;
+}
+
+#innerBlock span{
+	opacity:100%;
+	font-size:72px;
+	font-family:Clearlight;
+}
+#loginBlock form{
+	font-family:clearlight;
+	font-size:24px;
+	}
+#loginBlock hr{
+	width:550px;
+
+	}

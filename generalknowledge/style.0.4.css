@@ -1,0 +1,551 @@
+@font-face{
+  font-family: BlockBE;
+  src : url(../fonts/BlockBE-Regular.otf);
+}
+@font-face{
+  font-family: ArchitectsDaughter;
+  src : url(../fonts/ArchitectsDaughter.ttf);
+}
+@font-face{
+  font-family: ITCAvantGardeProBold;
+  src : url(../fonts/ITCAvantGardePro-Bold.otf);
+}
+@font-face{
+  font-family: OpenSansExtraBold;
+  src : url(../fonts/OpenSans-ExtraBold.ttf);
+}
+@font-face{
+  font-family: RobotoBold;
+  src : url(../fonts/Roboto-Bold.ttf);
+}
+@font-face{
+  font-family: RobotoMedium;
+  src : url(../fonts/Roboto-Medium.ttf);
+}
+@font-face{
+  font-family: RobotoRegular;
+  src : url(../fonts/Roboto-Regular.ttf);
+}
+@font-face{
+  font-family: RobotoBlack;
+  src : url(../fonts/Roboto-Black.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: #1b384c;
+}
+.clr{
+  clear:both;
+}
+a{
+  color:#fff;
+}
+
+.wrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #faf1ca;
+    overflow: scroll;
+}
+.container {
+  width: 1000px;
+  margin:0 auto;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+
+}
+.one .container{
+  background: url(../images/cover.png) no-repeat bottom right;
+}
+.english .container{
+  background: url(../images/englishCover.png) no-repeat bottom right;
+}
+
+.sst .container{
+  background: url(../images/sstCover.png) no-repeat bottom right;
+}
+.science .container{
+  background: url(../images/scienceCover.png) no-repeat bottom right;
+}
+.maths .container{
+  background: url(../images/mathsCover.png) no-repeat bottom right;
+}
+.two, .english, .sst, .science, .maths,.result1,.result2{
+  display: none
+}
+
+.header{
+  padding-top: 3%
+}
+.logo{
+  padding-top: 3%
+}
+.logoLeft{
+  float:left;
+}
+.title{
+  font-family: BlockBE;
+  font-size: 72px ;
+  color:#1b384c;
+  margin:6% 0;
+}
+.find{
+  font-family: OpenSansExtraBold;
+  font-size: 18px;
+  padding: 1% 2%;
+  background-color: #c0ede3;
+  display: inline-block;
+  cursor:pointer;
+}
+.next{
+  font-family: OpenSansExtraBold;
+  font-size: 18px;
+  padding: 1% 2%;
+  background-color: #c0ede3;
+  display: inline-block;
+  cursor:pointer;
+  margin:2% 0;
+}
+
+.chooseSubject{
+  margin:6% 0 3%;
+}
+.choose{
+  font-family: OpenSansExtraBold;
+  font-size: 46px;
+
+  margin-bottom: 3%;
+}
+.chooseOptionSubject{
+  width:20%;
+  float:left;
+}
+.chooseOptionImg{
+  height: 110px
+}
+.chooseOptionImg{
+  width:100%;
+}
+.chooseOptionSubjectName{
+  font-family: RobotoBold;
+  font-size: 24px;
+
+}
+
+.englishTitle{
+  font-family: OpenSansExtraBold;
+  font-size: 38px;
+  width:75%;
+}
+.englishQuestionName{
+  font-family: RobotoMedium;
+  font-size: 24px;
+  margin: 2% 0;
+}
+.questionAsk{
+  font-family: OpenSansExtraBold;
+  font-size: 26px;
+  width:75%;
+}
+.questionTextbox{
+  margin: 2% 0;
+}
+.questionNumber{
+font-family: RobotoMedium;
+  font-size: 18px;
+}
+.questionradioOptions{
+  margin:5% 0;
+}
+.textboxSize {
+  width: 300px;
+  height: 35px;
+  font-size: 18px;
+  border: 1px solid #000;
+  padding: 5px;
+}
+.leftResultDisplay{
+    width: 56%;
+    float: left;
+    border: 5px solid #f6ae32;
+    text-align: center;
+    border-radius: 5%;
+}
+.rightResultDisplay{
+  width:40%;
+  float:left;
+  margin-left:2%;
+}
+.marksheet{
+  font-family: OpenSansExtraBold;
+  font-size: 46px;
+}
+.mediumBorder{
+  width: 120px;
+  height: 3px;
+  background: #6693aa;
+  margin: 0% 40%;
+}
+.shortBorder{
+  width: 80px;
+  height: 2px;
+  background: #6693aa;
+  margin: 2% 45%;
+}
+.largeBorder{
+  width: 220px;
+    height: 4px;
+    background: #f6ae32;
+    margin: 2% 32%;
+
+}
+.examDate{
+  font-family: RobotoMedium;
+  font-size: 24px;
+}
+.resultIndividual, .resultCombined{
+  margin-top:5%;
+}
+
+.resultIndividualAnalysis, .resultCombineAnalysis{
+  width:100%;
+  margin: 6% 0;
+}
+.subjectName{
+  width:60%;
+  float:left;
+}
+.borderMid{
+  width: 1px;
+  height: 150px;
+  background: #000;
+  float: left;
+  margin-bottom: 5%;
+}
+.gradeName{
+  width:35%;
+  float:left;
+}
+
+.subTitle{
+  font-family: OpenSansExtraBold;
+  font-size: 30px;
+}
+.subName{
+  font-family: RobotoRegular;
+  font-size: 28px;
+  margin-top: 12%;
+}
+
+.subGrade{
+  font-family: RobotoBlack;
+  font-size: 28px;
+  margin-top: 18%;
+}
+
+
+.subCombineName{
+  font-family: RobotoRegular;
+  font-size: 28px;
+  text-align: left;
+    padding-left: 30%;
+}
+.subCombineGrade{
+  font-family: RobotoBlack;
+  font-size: 28px;
+
+}
+.borderCombineMid{
+  width: 1px;
+  height: 170px;
+  background: #000;
+  float: left;
+  margin-bottom: 5%;
+}
+.resultAnotherCombineOption{
+   margin: 40% 0 5%;
+}
+.resultQuote{
+
+  font-family: ArchitectsDaughter;
+  font-size: 32px;
+  color:#be041e;
+}
+.resultAnotherOption{
+      margin: 10% 0 5%;
+}
+.testAnother{
+  font-family: OpenSansExtraBold;
+  font-size: 24px;
+  margin-bottom: 5%;
+}
+.find{
+  font-family: OpenSansExtraBold;
+  font-size: 18px;
+  padding: 1% 2%;
+  background-color: #f6ae32;
+  display: inline-block;
+  cursor:pointer;
+}
+.shareIcons span{
+  margin-left:20px;
+}
+
+
+
+
+.options li {
+    margin: 1% 5%;
+    list-style: none;
+    font-family: RobotoMedium;
+    font-size: 36px;
+}
+.chooseOption li{
+   list-style: none;
+    font-family: RobotoMedium;
+    font-size: 36px;
+}
+.chooseOption{
+  margin-bottom: 5%;
+}
+
+.custIndicator2{
+  position: relative !important;
+  left: 0px !important;
+}
+/*Radio*/
+.custRadio {
+  display: block;
+  position: relative;
+  padding-left: 2%;
+  margin-bottom: 2%;
+  cursor: pointer;
+  width: 90%;
+  font-family: RobotoMedium;
+    font-size: 36px;
+  line-height: 1.2em;
+}
+.custRadio input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.custIndicator {
+  position: absolute;
+top: 11px;
+left: -50px;
+height: 20px;
+width: 20px;
+border: 2px solid #f6ae32;
+}
+.custRadio .custIndicator {
+  border-radius: 50%;
+}
+.custRadio input:checked~.custIndicator {
+  background: #7d1953;
+}
+.custRadio input:checked~.custIndicator:after {
+  display: block;
+}
+.custRadio .custIndicator:after {
+  left: 7px;
+  top: 7px;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background: #fdde32;
+}
+.custIndicator:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+
+.question {
+    width: 100%;
+    display: none;
+    padding-bottom: 100px;
+    margin-top:5%;
+    }
+#engQ1,#sstQ1, #scienceQ1, #mathsQ1{
+  display: block;
+}
+
+.addWidth{
+  width:75%;
+}
+
+.timer {
+    float: right;
+    font-family: RobotoMedium;
+    font-size: 32px;
+    position: relative;
+    top: 10px;
+    right: 10px;
+}
+.next{
+  font-family: OpenSansExtraBold;
+  font-size: 18px;
+  padding: 1% 2%;
+  background-color: #f6ae32;
+  /*display: inline-block;*/
+  cursor:pointer;
+  margin:2% 0;
+  width:5%;
+}
+.submitthis{
+  font-family: OpenSansExtraBold;
+  font-size: 18px;
+  padding: 1% 2%;
+  background-color: #f6ae32;
+  /*display: inline-block;*/
+  cursor:pointer;
+  margin:2% 0;
+  width:16%;
+}
+.showAnswer{
+  font-family: OpenSansExtraBold;
+  font-size: 18px;
+  padding: 1% 2%;
+  background-color: #f6ae32;
+  /*display: inline-block;*/
+  cursor:pointer;
+  margin:2% 0;
+  /*display:none;*/
+  width:16%;
+}
+.showMathsAnswer{
+  font-family: OpenSansExtraBold;
+  font-size: 18px;
+  padding: 1% 2%;
+  background-color: #f6ae32;
+  /*display: inline-block;*/
+  cursor:pointer;
+  margin:2% 0;
+  width:16%;
+}
+.toggleNext{
+  display:none;
+}
+.answerText{
+  font-family: RobotoMedium;
+  font-size: 32px;
+  display: none;
+  margin-bottom: 3%;
+  width:75%;
+}
+.popup-wrapper{
+    position: fixed;
+    /*display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;*/
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.6);
+    z-index: 12;
+    opacity: 0;
+    outline: none;
+    pointer-events: none;
+    transition: opacity .2s;
+}
+.popup-wrapper{
+    opacity: 1;
+    pointer-events: auto;
+    display: none;
+}
+.popup-inner{
+    outline: none;
+    position: relative;
+ }
+
+ .popup-container{
+    min-width: 400px;
+    max-width: 700px;
+    min-height: 460px;
+    max-height: 90vh;
+    background: #faf1ca;
+    border-radius: 4px;
+    margin: 0 auto;
+    overflow: auto;
+    font-family: OpenSansExtraBold;
+ }
+ .popup-container h2 {
+    padding: 100px 50px;
+    font-family: OpenSansExtraBold;
+    font-size: 45px;
+    color: #1b384c;
+    text-align: center;
+}
+ .popupOk {
+    text-align: center;
+    cursor: pointer;
+}
+ .popupOk span {
+    display: inline-block;
+    padding: 10px 60px;
+    background: #f6ae32;
+    color: #1b384c;
+    font-size: 24px;
+}
+.imageDisplay{
+  margin-left: 5px;
+}
+.subtitle{
+  font-family: BlockBE;
+  font-size: 30px ;
+  color:#1b384c;
+  margin:2% 0;
+}
+.minititle{
+  font-family: BlockBE;
+  font-size: 30px ;
+  color:#1b384c;
+  margin:1% 0;
+}
+#centerBlock{
+  margin-top:100px;
+  width:750px;
+  height:500px;
+}
+
+
+#innerBlock{
+  opacity:0.8;
+  text-align: center;
+  width: 100%;
+  height:100%;
+  background-color: black;
+  color: white;
+  border-radius: 30px 30px 30px 30px;
+}
+
+#innerBlock span{
+  opacity:100%;
+  font-size:72px;
+  font-family:Clearlight;
+}
+#loginBlock form{
+  font-family:clearlight;
+  font-size:24px;
+  }
+#loginBlock hr{
+  width:550px;
+
+  }
+.copyright{
+  background-color: white;
+}
